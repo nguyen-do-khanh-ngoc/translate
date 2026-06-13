@@ -18,7 +18,7 @@ class RuleBasedTranslator:
         for _, row in clean_df.iterrows():
             key = str(row["Từ"]).lower().strip()
             val = str(row["Ý nghĩa"]).lower().strip()
-            raw_meanings = re.split(r'[,;]|\b\d+[\.\)]\s*', val)
+            raw_meanings = re.split(r'[,;/]|\b\d+[\.\)]\s*', val)
             meanings_list = [m.replace(".", "").strip(" ;") for m in raw_meanings if m.replace(".", "").strip(" ;")]
             if not meanings_list: meanings_list = [key]
             self.translation_map[key] = meanings_list
